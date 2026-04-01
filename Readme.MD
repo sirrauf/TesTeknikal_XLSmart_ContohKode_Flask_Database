@@ -1,7 +1,5 @@
 ---
-
 # Test Teknikal XL Smart – Contoh Kode Python Flask Database
-
 ---
 
 ## Requirements
@@ -41,4 +39,98 @@ atau
 
 ```bash
 python app.py
+```
+
+Server akan berjalan di `http://127.0.0.1:5000`
+
+---
+
+## Cara Menggunakan API dengan Postman
+
+### 1. Halaman Utama
+
+| Item   | Detail                   |
+| ------ | ------------------------ |
+| Method | `GET`                    |
+| URL    | `http://127.0.0.1:5000/` |
+
+Menampilkan daftar endpoint yang tersedia.
+
+---
+
+### 2. Insert Data User
+
+| Item         | Detail                         |
+| ------------ | ------------------------------ |
+| Method       | `POST`                         |
+| URL          | `http://127.0.0.1:5000/insert` |
+| Content-Type | `application/json`             |
+
+**Langkah di Postman:**
+
+1. Pilih method **POST**
+2. Masukkan URL `http://127.0.0.1:5000/insert`
+3. Buka tab **Headers**, tambahkan:
+   - Key: `Content-Type`
+   - Value: `application/json`
+4. Buka tab **Body** → pilih **raw** → pilih **JSON**
+5. Masukkan JSON berikut:
+
+```json
+{
+  "IDUser": "1",
+  "nama_User": "Rauf",
+  "Email": "rauf@email.com",
+  "password": "123456"
+}
+```
+
+**Contoh Response (201 Created):**
+
+```json
+{
+  "status": "success",
+  "message": "Data berhasil ditambahkan",
+  "data": {
+    "IDUser": "1",
+    "nama_User": "Rauf",
+    "Email": "rauf@email.com"
+  }
+}
+```
+
+---
+
+### 3. Lihat Data User berdasarkan IDUser
+
+| Item   | Detail                                     |
+| ------ | ------------------------------------------ |
+| Method | `GET`                                      |
+| URL    | `http://127.0.0.1:5000/lihatdata/{IDUser}` |
+
+**Langkah di Postman:**
+
+1. Pilih method **GET**
+2. Masukkan URL, contoh: `http://127.0.0.1:5000/lihatdata/1`
+
+**Contoh Response (200 OK):**
+
+```json
+{
+  "status": "success",
+  "data": {
+    "nama_User": "Rauf",
+    "Email": "rauf@email.com",
+    "password": "123456"
+  }
+}
+```
+
+**Jika IDUser tidak ditemukan (404 Not Found):**
+
+```json
+{
+  "status": "error",
+  "message": "User dengan IDUser \"99\" tidak ditemukan"
+}
 ```
