@@ -66,7 +66,7 @@ Menampilkan daftar endpoint yang tersedia.
 | URL          | `http://127.0.0.1:5000/insert` |
 | Content-Type | `application/json`             |
 
-![SS_POST_POSTMAN]()
+![SS_POST_POSTMAN](https://raw.githubusercontent.com/sirrauf/TesTeknikal_XLSmart_ContohKode_Flask_Database/main/SS_Hasil_POSTMAN/SS_POST_POSTMAN.png)
 
 **Langkah di Postman:**
 
