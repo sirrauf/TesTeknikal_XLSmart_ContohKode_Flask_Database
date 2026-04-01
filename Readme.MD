@@ -1,13 +1,13 @@
 ---
 
-# 📌 Test Teknikal XL Smart – Contoh Kode Python Flask
+# Test Teknikal XL Smart – Contoh Kode Python Flask Database
 
 ---
 
-## 📦 Requirements
+## Requirements
 
 1. Download & Install Python (minimal versi 3.10.11)
-   👉 [https://www.python.org/downloads/release/python-31011/](https://www.python.org/downloads/release/python-31011/)
+   [https://www.python.org/downloads/release/python-31011/](https://www.python.org/downloads/release/python-31011/)
 
 2. Buat virtual environment:
 
@@ -29,7 +29,7 @@
 
 ---
 
-## 🚀 Menjalankan Web Server
+## Menjalankan Web Server
 
 Jalankan perintah berikut di Command Prompt (CMD) pada folder project:
 
