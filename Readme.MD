@@ -110,6 +110,8 @@ Menampilkan daftar endpoint yang tersedia.
 | Method | `GET`                                      |
 | URL    | `http://127.0.0.1:5000/lihatdata/{IDUser}` |
 
+![SS_GET_POSTMAN](https://raw.githubusercontent.com/sirrauf/TesTeknikal_XLSmart_ContohKode_Flask_Database/main/SS_Hasil_POSTMAN/SS_GET_POSTMAN.png)
+
 **Langkah di Postman:**
 
 1. Pilih method **GET**
