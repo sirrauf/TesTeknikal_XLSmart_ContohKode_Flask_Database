@@ -80,9 +80,9 @@ Menampilkan daftar endpoint yang tersedia.
 
 ```json
 {
-  "IDUser": "1",
+  "IDUser": "2",
   "nama_User": "Rauf",
-  "Email": "rauf@email.com",
+  "Email": "sirrauf@gmail.com",
   "password": "123456"
 }
 ```
@@ -94,9 +94,9 @@ Menampilkan daftar endpoint yang tersedia.
   "status": "success",
   "message": "Data berhasil ditambahkan",
   "data": {
-    "IDUser": "1",
+    "IDUser": "2",
     "nama_User": "Rauf",
-    "Email": "rauf@email.com"
+    "Email": "sirrauf@gmail.com"
   }
 }
 ```
@@ -115,7 +115,7 @@ Menampilkan daftar endpoint yang tersedia.
 **Langkah di Postman:**
 
 1. Pilih method **GET**
-2. Masukkan URL, contoh: `http://127.0.0.1:5000/lihatdata/1`
+2. Masukkan URL, contoh: `http://127.0.0.1:5000/lihatdata/2`
 
 **Contoh Response (200 OK):**
 
@@ -124,7 +124,7 @@ Menampilkan daftar endpoint yang tersedia.
   "status": "success",
   "data": {
     "nama_User": "Rauf",
-    "Email": "rauf@email.com",
+    "Email": "sirrauf@gmail.com",
     "password": "123456"
   }
 }
