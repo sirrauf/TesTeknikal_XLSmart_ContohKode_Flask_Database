@@ -20,7 +20,7 @@ def konek_db():
 
 
 @app.route('/')
-def input_data():
+def beranda_api():
     return jsonify({
         'status': 'success',
         'message': 'Selamat datang di API Database MySQL',
