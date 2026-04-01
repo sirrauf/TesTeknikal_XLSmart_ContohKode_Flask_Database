@@ -66,6 +66,8 @@ Menampilkan daftar endpoint yang tersedia.
 | URL          | `http://127.0.0.1:5000/insert` |
 | Content-Type | `application/json`             |
 
+![SS_POST_POSTMAN]()
+
 **Langkah di Postman:**
 
 1. Pilih method **POST**
