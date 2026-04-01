@@ -15,7 +15,6 @@
 
 4. Install Library/Install Dependency: pip install -r requirements.txt
 
----
 
 ---
 
