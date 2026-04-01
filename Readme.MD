@@ -1,23 +1,44 @@
-------------------------------------------------------------------------
+---
 
-# Test Teknikal XL Smart Contoh kode Python Flask
+# 📌 Test Teknikal XL Smart – Contoh Kode Python Flask
 
 ---
 
+## 📦 Requirements
 
-# Requirements
+1. Download & Install Python (minimal versi 3.10.11)
+   👉 [https://www.python.org/downloads/release/python-31011/](https://www.python.org/downloads/release/python-31011/)
 
-1. [Download & Install Python Minimal 3.10.11]("https://www.python.org/downloads/release/python-31011/")
+2. Buat virtual environment:
 
-2. Create venv: python -m venv venv
+   ```bash
+   python -m venv venv
+   ```
 
-3. Activate venv Windows: venv\Scripts\activate
+3. Aktifkan virtual environment (Windows):
 
-4. Install Library/Install Dependency: pip install -r requirements.txt
+   ```bash
+   venv\Scripts\activate
+   ```
 
+4. Install dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ---
 
-# Run Web Server
+## 🚀 Menjalankan Web Server
 
-ketik di command prompt(CMD) didalam folder proyek: flask run atau python app.py
+Jalankan perintah berikut di Command Prompt (CMD) pada folder project:
+
+```bash
+flask run
+```
+
+atau
+
+```bash
+python app.py
+```
