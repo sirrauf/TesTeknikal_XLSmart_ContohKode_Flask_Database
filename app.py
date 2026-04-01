@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, request, jsonify
 import os
 from dotenv import load_dotenv
 import pymysql
@@ -21,7 +21,14 @@ def konek_db():
 
 @app.route('/')
 def input_data():
-    return render_template('input_data.html', title="Input Data Web")
+    return jsonify({
+        'status': 'success',
+        'message': 'Selamat datang di API Database MySQL',
+        'endpoints': {
+            'POST /insert': 'Insert data user baru (gunakan Postman, kirim JSON body)',
+            'GET /lihatdata/<IDUser>': 'Lihat data user berdasarkan IDUser'
+        }
+    }), 200
 
 
 @app.route('/insert', methods=['POST'])
@@ -29,6 +36,22 @@ def insert_db():
     koneksi_db = None
     cursor_db = None
     try:
+        data = request.get_json()
+
+        if not data:
+            return jsonify({
+                'status': 'error',
+                'message': 'Request body harus berupa JSON. Pastikan Content-Type: application/json'
+            }), 400
+
+        required_fields = ['IDUser', 'nama_User', 'Email', 'password']
+        for field in required_fields:
+            if field not in data:
+                return jsonify({
+                    'status': 'error',
+                    'message': f'Field "{field}" wajib diisi'
+                }), 400
+
         koneksi_db = konek_db()
         cursor_db = koneksi_db.cursor()
 
@@ -38,27 +61,39 @@ def insert_db():
         """
 
         cursor_db.execute(querysql, (
-            request.form['IDUser'],
-            request.form['nama_User'],
-            request.form['Email'],
-            request.form['password']
+            data['IDUser'],
+            data['nama_User'],
+            data['Email'],
+            data['password']
         ))
 
         koneksi_db.commit()
 
-        return 'Data berhasil ditambahkan'
+        return jsonify({
+            'status': 'success',
+            'message': 'Data berhasil ditambahkan',
+            'data': {
+                'IDUser': data['IDUser'],
+                'nama_User': data['nama_User'],
+                'Email': data['Email']
+            }
+        }), 201
 
     except Exception as e:
-        return str(e)
+        return jsonify({
+            'status': 'error',
+            'message': str(e)
+        }), 500
 
     finally:
         if cursor_db:
             cursor_db.close()
         if koneksi_db:
             koneksi_db.close()
-            
-@app.route('/lihatdata', methods=['GET'])
-def lihat_data():
+
+
+@app.route('/lihatdata/<IDUser>', methods=['GET'])
+def lihat_data(IDUser):
     koneksi_db = None
     cursor_db = None
     try:
@@ -66,16 +101,32 @@ def lihat_data():
         cursor_db = koneksi_db.cursor()
 
         querysql = """
-        SELECT * FROM tbl_user
+        SELECT nama_User, Email, password FROM tbl_user WHERE IDUser = %s
         """
 
-        cursor_db.execute(querysql)
-        data_user = cursor_db.fetchall()
+        cursor_db.execute(querysql, (IDUser,))
+        data_user = cursor_db.fetchone()
 
-        return render_template('lihat_data.html', data_user=data_user)
+        if data_user:
+            return jsonify({
+                'status': 'success',
+                'data': {
+                    'nama_User': data_user['nama_User'],
+                    'Email': data_user['Email'],
+                    'password': data_user['password']
+                }
+            }), 200
+        else:
+            return jsonify({
+                'status': 'error',
+                'message': f'User dengan IDUser "{IDUser}" tidak ditemukan'
+            }), 404
 
     except Exception as e:
-        return str(e)
+        return jsonify({
+            'status': 'error',
+            'message': str(e)
+        }), 500
 
     finally:
         if cursor_db:
